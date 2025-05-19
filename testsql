@@ -1,0 +1,34 @@
+
+
+CREATE TABLE department(
+    dept_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    location VARCHAR(20)
+);
+
+CREATE TABLE employee(
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    salary INT,
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+);
+    
+INSERT INTO department VALUES(1, 'HR', 'Kakinada');
+INSERT INTO department VALUES(2, 'Testing', 'Samarlkot');
+INSERT INTO department VALUES(3, 'Sales', 'Rajamundry');
+
+INSERT INTO employee VALUES(1, 'Jhansi', 29, 55000, 1);
+INSERT INTO employee VALUES(2, 'Vidya', 28, 50000, 2);
+INSERT INTO employee VALUES(3, 'Jessica', 28, 45000, 3);
+   
+SELECT e.name, e.salary, d.name
+FROM 
+employee e JOIN department d ON e.dept_id = d.dept_id;
+ 
+SELECT * FROM department;
+SELECT * FROM employee;
+
+drop table employee;
+drop table department;
